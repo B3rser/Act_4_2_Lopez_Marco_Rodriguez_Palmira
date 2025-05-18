@@ -1,3 +1,94 @@
-#Btn {
-    
+.custom-button {
+  border-radius: 8px;
+  height: 49px;
+  padding: 15px 60px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
 }
+
+/* === Default ===*/
+.primary {
+   border: none;
+  background-color: var(--color-teal-blue);
+  color: white;
+}
+
+.alternative {
+   border: none;
+  background-color: var(--color-teal-yellow);
+  color: white;
+}
+
+.secondary {
+  background-color: var(--color-dark-gary);
+  color: var(--color-mono-gray);
+  border: 1px solid var(--color-dark-gray);
+}
+
+
+/* === HOVER ===*/
+
+/* Hover real para cada prioridad (cuando no esta forzado) */
+.custom-button.primary:hover:not(.hover):not(.disabled):not(:disabled) {
+  background-color: var(--color-navy-blue);
+}
+
+.custom-button.alternative:hover:not(.hover):not(.disabled):not(:disabled) {
+  background-color: var(--color-mustard-yellow);
+}
+
+.custom-button.secondary:hover:not(.hover):not(.disabled):not(:disabled) {
+   border-color: black;
+  background-color: var(--color-dark-gary);
+  color: var(--color-mono-gray);
+}
+
+.custom-button.primary.hover {
+  background-color: var(--color-navy-blue);
+}
+
+.custom-button.alternative.hover {
+  background-color: var(--color-mustard-yellow);
+}
+
+.custom-button.secondary.hover {
+  border-color: var(--color-black);
+  background-color: var(--color-dark-gary);
+  color: var(--color-mono-gray);
+}
+
+
+/* === Disabled ===*/
+
+.custom-button.primary.disabled,
+.custom-button.primary:disabled {
+  background-color: rgba(0, 51, 102, 0.5); 
+  color: white;
+  cursor: not-allowed;
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px); /* para Safari */
+  border: none;
+}
+
+
+.custom-button.alternative.disabled,
+.custom-button.alternative:disabled {
+  background-color: rgba(255, 193, 7, 0.5); 
+  color: white;
+  cursor: not-allowed;
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px); 
+  border: none;
+}
+
+.custom-button.secondary.disabled,
+.custom-button.secondary:disabled {
+  background-color: var(--color-dark-gary);
+  color: var(--color-mono-gray);
+  cursor: not-allowed;
+  backdrop-filter: blur(4px); 
+  -webkit-backdrop-filter: blur(4px);
+}
+
