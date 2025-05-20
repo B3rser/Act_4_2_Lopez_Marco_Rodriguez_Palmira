@@ -21,6 +21,12 @@
   color: white;
 }
 
+.alternative-card{
+  border: none;
+  background-color: var(--color-light-gray);
+  color: var(--color-black);
+}
+
 .secondary {
   background-color: var(--color-dark-gary);
   color: var(--color-mono-gray);

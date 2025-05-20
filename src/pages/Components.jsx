@@ -1,46 +1,82 @@
-import React from 'react';
-import Button from '../components/Button';
+import React, { useEffect, useRef } from 'react';
 
 export function Components() {
-    return (
-        <div>
-            <Button
-                label="Primary"
-                priority="primary"
-                onClick={() => alert('¡Clic real detectado!')}
-            />
-            <Button
-                label="Primary D"
-                priority="primary"
-                state="disabled"
-            />
+  const handleClick = () => {
+    alert('¡Botón presionado!');
+  };
+
+  React.useEffect(() => {
+    const btn = document.querySelector('x-button');
+    btn.onClick = handleClick;
+  }, []);
+
+  const cardRef = useRef(null);
+
+  useEffect(() => {
+    if (cardRef.current) {
+      cardRef.current.onClick = () => {
+        alert('¡Botón clickeado desde React!');
+      };
+    }
+  }, []);
+
+  const textCardRef = useRef(null);
+  useEffect(() => {
+    if (textCardRef.current) {
+      textCardRef.current.onClick = () => {
+        alert('¡Haz hecho clic en el botón del TextCard!');
+      };
+    }
+  }, []);
 
 
-            <Button
-                label="Alternative"
-                priority="alternative"
-            
-            />
-            <Button
-                label="Alternative D"
-                priority="alternative"
-                state="disabled"
-            
-            />
+  return (
+    <div>
+      <div>
+        <x-button label="Clickeame" priority="primary" state="default"></x-button>
+      </div>
+      <div>
+        <x-button label="Clickeame" priority="alternative" state="default"></x-button>
+      </div>
+      <div>
+        <x-button label="Clickeame" priority="secondary" state="default"></x-button>
+      </div>
+      <div>
+        <x-card
+          ref={cardRef}
+          type="universidad"
+          image="https://wp.uaslp.mx/noticias/wp-content/uploads/sites/5/2024/04/thumbnail_UASLP-1024x682.jpg"
+          title="uaslp"
+          content="jdeneodoekde"
+          buttonPriority='alternative'
+          buttonLabel='Ver más'>
+        </x-card>
 
+      </div>
+      <div>
+        <x-card
+          ref={cardRef}
+          type="carrera"
+          image="https://wp.uaslp.mx/noticias/wp-content/uploads/sites/5/2024/04/thumbnail_UASLP-1024x682.jpg"
+          title="uaslp"
+          content="jdeneodoekde jsbibsbwuibsuiw"
+          buttonPriority='alternative'
+          buttonLabel='Ver más'>
+        </x-card>
 
-            <Button
-                label="Secondary"
-                priority="secondary"
-            />
-            <Button
-                label="Secondary D"
-                priority="secondary"
-                state="disabled"
-            />
+      </div>
+      <div>
+        <x-textcard
+          ref={textCardRef}
+          label="Título de la tarjeta"
+          description="Descripción de la tarjeta."
+          type="card-boton"
+          buttonpriority="primary"
+          buttonlabel="Haz clic"
+        />
+      </div>
 
-            
+    </div>
 
-        </div>
-    )
+  );
 }

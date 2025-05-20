@@ -1,0 +1,31 @@
+.text-card {
+  width: 292px;
+  min-height: 191px;
+  padding: 20px 28px;
+  border-radius: 8px;
+  background-color: var(--color-light-gray);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.text-card-title {
+  margin: 0;
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--color-black2);
+}
+
+.text-card-description {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--color-dark-gray);
+  flex-grow: 1;
+}
+
+.text-card-button-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 12px;
+}
