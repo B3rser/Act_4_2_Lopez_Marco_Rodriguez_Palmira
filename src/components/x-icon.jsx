@@ -1,4 +1,5 @@
 import React from 'react';
+import ReactDOM from 'react-dom/client';
 
 const iconPaths = new Map([
     ['home', { path: 'M3 8.24998L12 1.83331L21 8.24998V18.3333C21 18.8195 20.7893 19.2859 20.4142 19.6297C20.0391 19.9735 19.5304 20.1666 19 20.1666H5C4.46957 20.1666 3.96086 19.9735 3.58579 19.6297C3.21071 19.2859 3 18.8195 3 18.3333V8.24998Z M9 20.1667V11H15V20.1667', useStroke: true, viewBox: '0 0 24 22' }],
@@ -37,9 +38,8 @@ const iconPaths = new Map([
     ['tiktok', { path: 'M16.708 0.027c1.745-0.027 3.48-0.011 5.213-0.027 0.105 2.041 0.839 4.12 2.333 5.563 1.491 1.479 3.6 2.156 5.652 2.385v5.369c-1.923-0.063-3.855-0.463-5.6-1.291-0.76-0.344-1.468-0.787-2.161-1.24-0.009 3.896 0.016 7.787-0.025 11.667-0.104 1.864-0.719 3.719-1.803 5.255-1.744 2.557-4.771 4.224-7.88 4.276-1.907 0.109-3.812-0.411-5.437-1.369-2.693-1.588-4.588-4.495-4.864-7.615-0.032-0.667-0.043-1.333-0.016-1.984 0.24-2.537 1.495-4.964 3.443-6.615 2.208-1.923 5.301-2.839 8.197-2.297 0.027 1.975-0.052 3.948-0.052 5.923-1.323-0.428-2.869-0.308-4.025 0.495-0.844 0.547-1.485 1.385-1.819 2.333-0.276 0.676-0.197 1.427-0.181 2.145 0.317 2.188 2.421 4.027 4.667 3.828 1.489-0.016 2.916-0.88 3.692-2.145 0.251-0.443 0.532-0.896 0.547-1.417 0.131-2.385 0.079-4.76 0.095-7.145 0.011-5.375-0.016-10.735 0.025-16.093z', useStroke: false, viewBox: '0 0 32 32' }],
 ]);
 
-export function Icon({ name, size = 24, color = 'var(--color-black)' }) {
+const Icon = ({ name, size = 24, color = 'var(--color-black)' }) => {
     const icon = iconPaths.get(name);
-
     if (!icon) return null;
 
     return (
@@ -57,76 +57,45 @@ export function Icon({ name, size = 24, color = 'var(--color-black)' }) {
             <path d={icon.path} />
         </svg>
     );
+};
+
+class CustomIconElement extends HTMLElement {
+    static get observedAttributes() {
+        return ['name', 'size', 'color'];
+    }
+
+    constructor() {
+        super();
+        const mountPoint = document.createElement('span');
+        this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
+        this.mountPoint = mountPoint;
+    }
+
+    connectedCallback() {
+        this.renderReact();
+    }
+
+    attributeChangedCallback() {
+        this.renderReact();
+    }
+
+    renderReact() {
+        const name = this.getAttribute('name');
+        const size = this.getAttribute('size');
+        const color = this.getAttribute('color');
+
+        if (!this.reactRoot) {
+            this.reactRoot = ReactDOM.createRoot(this.mountPoint);
+        }
+
+        this.reactRoot.render(
+            <Icon
+                name={name}
+                size={size ? Number(size) : undefined}
+                color={color ? color : 'var(--color-black)'}
+            />
+        );
+    }
 }
 
-const HomeIcon = ({ color, size, ...props }) => (<Icon name="home" color={color} size={size} {...props} />);
-const HelpIcon = ({ color, size, ...props }) => (<Icon name="help" color={color} size={size} {...props} />);
-const SuccessIcon = ({ color, size, ...props }) => (<Icon name="success" color={color} size={size} {...props} />);
-const ErrorIcon = ({ color, size, ...props }) => (<Icon name="error" color={color} size={size} {...props} />);
-const ArrowRightIcon = ({ color, size, ...props }) => (<Icon name="arrow-right" color={color} size={size} {...props} />);
-const CrossIcon = ({ color, size, ...props }) => (<Icon name="cross" color={color} size={size} {...props} />);
-const ArrowLeftIcon = ({ color, size, ...props }) => (<Icon name="arrow-left" color={color} size={size} {...props} />);
-const MenuIcon = ({ color, size, ...props }) => (<Icon name="menu" color={color} size={size} {...props} />);
-const EditIcon = ({ color, size, ...props }) => (<Icon name="edit" color={color} size={size} {...props} />);
-const DropdownIcon = ({ color, size, ...props }) => (<Icon name="dropdown" color={color} size={size} {...props} />);
-const BellIcon = ({ color, size, ...props }) => (<Icon name="bell" color={color} size={size} {...props} />);
-const PinIcon = ({ color, size, ...props }) => (<Icon name="pin" color={color} size={size} {...props} />);
-const DownloadIcon = ({ color, size, ...props }) => (<Icon name="download" color={color} size={size} {...props} />);
-const BarChartIcon = ({ color, size, ...props }) => (<Icon name="bar-chart" color={color} size={size} {...props} />);
-const InboxIcon = ({ color, size, ...props }) => (<Icon name="inbox" color={color} size={size} {...props} />);
-const FilterIcon = ({ color, size, ...props }) => (<Icon name="filter" color={color} size={size} {...props} />);
-const MapIcon = ({ color, size, ...props }) => (<Icon name="map" color={color} size={size} {...props} />);
-const ZapIcon = ({ color, size, ...props }) => (<Icon name="zap" color={color} size={size} {...props} />);
-const ShareIcon = ({ color, size, ...props }) => (<Icon name="share" color={color} size={size} {...props} />);
-const CreditCardIcon = ({ color, size, ...props }) => (<Icon name="credit-card" color={color} size={size} {...props} />);
-const SearchIcon = ({ color, size, ...props }) => (<Icon name="search" color={color} size={size} {...props} />);
-const UserIcon = ({ color, size, ...props }) => (<Icon name="user" color={color} size={size} {...props} />);
-const CalendarIcon = ({ color, size, ...props }) => (<Icon name="calendar" color={color} size={size} {...props} />);
-const EyeIcon = ({ color, size, ...props }) => (<Icon name="eye" color={color} size={size} {...props} />);
-const ClosedEyeIcon = ({ color, size, ...props }) => (<Icon name="closed-eye" color={color} size={size} {...props} />);
-const HeartIcon = ({ color, size, ...props }) => (<Icon name="heart" color={color} size={size} {...props} />);
-const CaretRightIcon = ({ color, size, ...props }) => (<Icon name="caret-right" color={color} size={size} {...props} />);
-const AnalyzeIcon = ({ color, size, ...props }) => (<Icon name="analyze" color={color} size={size} {...props} />);
-const ChatIcon = ({ color, size, ...props }) => (<Icon name="chat" color={color} size={size} {...props} />);
-const ResultIcon = ({ color, size, ...props }) => (<Icon name="result" color={color} size={size} {...props} />);
-const XIcon = ({ color, size, ...props }) => (<Icon name="x" color={color} size={size} {...props} />);
-const InstagramIcon = ({ color, size, ...props }) => (<Icon name="instagram" color={color} size={size} {...props} />);
-const FacebookIcon = ({ color, size, ...props }) => (<Icon name="facebook" color={color} size={size} {...props} />);
-const TiktokIcon = ({ color, size, ...props }) => (<Icon name="tiktok" color={color} size={size} {...props} />);
-
-export {
-    HomeIcon,
-    HelpIcon,
-    SuccessIcon,
-    ErrorIcon,
-    ArrowRightIcon,
-    CrossIcon,
-    ArrowLeftIcon,
-    MenuIcon,
-    EditIcon,
-    DropdownIcon,
-    BellIcon,
-    PinIcon,
-    DownloadIcon,
-    BarChartIcon,
-    InboxIcon,
-    FilterIcon,
-    MapIcon,
-    ZapIcon,
-    ShareIcon,
-    CreditCardIcon,
-    SearchIcon,
-    UserIcon,
-    CalendarIcon,
-    EyeIcon,
-    ClosedEyeIcon,
-    HeartIcon,
-    CaretRightIcon,
-    AnalyzeIcon,
-    ChatIcon,
-    ResultIcon,
-    XIcon,
-    InstagramIcon,
-    FacebookIcon,
-    TiktokIcon,
-};
+customElements.define('x-icon', CustomIconElement);
