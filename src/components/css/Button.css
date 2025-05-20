@@ -10,18 +10,18 @@
 
 /* === Default ===*/
 .primary {
-   border: none;
+  border: none;
   background-color: var(--color-teal-blue);
-  color: white;
+  color: var(--color-white);
 }
 
 .alternative {
-   border: none;
+  border: none;
   background-color: var(--color-teal-yellow);
-  color: white;
+  color: var(--color-white);
 }
 
-.alternative-card{
+.alternative-card {
   border: none;
   background-color: var(--color-light-gray);
   color: var(--color-black);
@@ -46,7 +46,7 @@
 }
 
 .custom-button.secondary:hover:not(.hover):not(.disabled):not(:disabled) {
-   border-color: black;
+  border-color: var(--color-black);
   background-color: var(--color-dark-gary);
   color: var(--color-mono-gray);
 }
@@ -70,23 +70,23 @@
 
 .custom-button.primary.disabled,
 .custom-button.primary:disabled {
-  background-color: rgba(0, 51, 102, 0.5); 
-  color: white;
+  background-color: var(--color-navy-blue);
+  color: var(--color-white);
   cursor: not-allowed;
-  backdrop-filter: blur(4px); 
-  -webkit-backdrop-filter: blur(4px); /* para Safari */
-  border: none;
+  filter: blur(2px);
+  pointer-events: none;
+  opacity: 1;
 }
 
 
 .custom-button.alternative.disabled,
 .custom-button.alternative:disabled {
-  background-color: rgba(255, 193, 7, 0.5); 
-  color: white;
+  background-color: var(--color-mustard-yellow);
+  color: var(--color-white);
   cursor: not-allowed;
-  backdrop-filter: blur(4px); 
-  -webkit-backdrop-filter: blur(4px); 
-  border: none;
+  filter: blur(2px);
+  pointer-events: none;
+  opacity: 1;
 }
 
 .custom-button.secondary.disabled,
@@ -94,7 +94,7 @@
   background-color: var(--color-dark-gary);
   color: var(--color-mono-gray);
   cursor: not-allowed;
-  backdrop-filter: blur(4px); 
-  -webkit-backdrop-filter: blur(4px);
+  filter: blur(2px);
+  pointer-events: none;
+  opacity: 1;
 }
-

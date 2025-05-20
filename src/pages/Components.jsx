@@ -42,6 +42,15 @@ export function Components() {
         <x-button label="Clickeame" priority="secondary" state="default"></x-button>
       </div>
       <div>
+        <x-button label="Clickeame" priority="primary" state="disabled"></x-button>
+      </div>
+      <div>
+        <x-button label="Clickeame" priority="alternative" state="disabled"></x-button>
+      </div>
+      <div>
+        <x-button label="Clickeame" priority="secondary" state="disabled"></x-button>
+      </div>
+      <div>
         <x-card
           ref={cardRef}
           type="universidad"
@@ -64,6 +73,16 @@ export function Components() {
           buttonLabel='Ver más'>
         </x-card>
 
+      </div>
+      <div>
+        <x-textcard
+          ref={textCardRef}
+          label="Título de la tarjeta"
+          description="Descripción de la tarjeta."
+          type="default"
+          buttonpriority="primary"
+          buttonlabel="Haz clic"
+        />
       </div>
       <div>
         <x-textcard
