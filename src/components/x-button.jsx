@@ -1,9 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import buttonCSS from './css/Button.css?inline'; // ⬅ Importar CSS como texto
+import buttonCSS from './css/x-button.css?inline';
 
 const Button = ({ label, priority = 'primary', state = 'default', onClick }) => {
   const isDisabled = state === 'disabled';
+  const isIconButton = priority === 'button-icon';
   const className = `custom-button ${priority} ${state !== 'default' ? state : ''}`;
 
   return (
@@ -12,7 +13,8 @@ const Button = ({ label, priority = 'primary', state = 'default', onClick }) => 
       onClick={onClick}
       disabled={isDisabled}
     >
-      {label}
+      <span>{label}</span>
+      {isIconButton && <x-icon name="arrow-right" size="16" class="icon-right" color='var(--color-white)' />}
     </button>
   );
 };
@@ -27,7 +29,6 @@ class XButton extends HTMLElement {
     this._props = {};
     this._root = this.attachShadow({ mode: 'open' });
 
-    // ⬇ Inyectar estilos al shadow root
     const style = document.createElement('style');
     style.textContent = buttonCSS;
     this._root.appendChild(style);

@@ -1,5 +1,5 @@
 import ReactDOM from 'react-dom/client';
-import cardCSS from './css/Card.css?inline';
+import cardCSS from './css/x-card.css?inline';
 import React, { useEffect, useRef } from 'react';
 
 const Card = ({
@@ -7,7 +7,7 @@ const Card = ({
   image,
   title,
   content,
-  buttonPriority = 'alternative',
+  buttonPriority = 'alternative-card',
   buttonLabel = 'Ver más',
   onButtonClick,
 }) => {

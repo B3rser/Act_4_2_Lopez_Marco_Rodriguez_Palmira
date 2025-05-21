@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import textCardCSS from './css/TextCard.css?inline'; // Asegúrate de tener este archivo
+import textCardCSS from './css/x-textCard.css?inline';
 
 const TextCard = ({
   label,
@@ -8,10 +8,14 @@ const TextCard = ({
   type = 'default',
   buttonPriority = 'primary',
   buttonLabel = 'Ver más',
+  icon,
 }) => {
   return (
     <div className="text-card">
-      <h3 className="text-card-title">{label}</h3>
+      <h3 className="text-card-title">
+        {label}
+        {icon && <x-icon name={icon} size="20" style={{ marginLeft: '8px', verticalAlign: 'middle' }} />}
+      </h3>
       <p className="text-card-description">{description}</p>
       {type === 'card-boton' && (
         <div className="text-card-button-wrapper">
@@ -28,7 +32,7 @@ const TextCard = ({
 
 class XTextCard extends HTMLElement {
   static get observedAttributes() {
-    return ['label', 'description', 'type', 'buttonpriority', 'buttonlabel'];
+    return ['label', 'description', 'type', 'buttonpriority', 'buttonlabel', 'icon'];
   }
 
   constructor() {
@@ -73,7 +77,8 @@ class XTextCard extends HTMLElement {
       type,
       buttonpriority,
       buttonlabel,
-      onClick, // Esto es importante para mantener la lógica
+      icon,
+      onClick,
     } = this._props;
 
     this._reactRoot.render(
@@ -83,6 +88,7 @@ class XTextCard extends HTMLElement {
         type={type}
         buttonPriority={buttonpriority}
         buttonLabel={buttonlabel}
+        icon={icon}
         onClick={onClick}
       />
     );

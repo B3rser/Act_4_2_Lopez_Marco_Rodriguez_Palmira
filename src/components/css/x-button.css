@@ -13,12 +13,14 @@
   border: none;
   background-color: var(--color-teal-blue);
   color: var(--color-white);
+  box-shadow: 0 4px 8px var(--color-light-gray);
 }
 
 .alternative {
   border: none;
   background-color: var(--color-teal-yellow);
   color: var(--color-white);
+  box-shadow: 0 4px 8px var(--color-light-gray);
 }
 
 .alternative-card {
@@ -31,6 +33,7 @@
   background-color: var(--color-dark-gary);
   color: var(--color-mono-gray);
   border: 1px solid var(--color-dark-gray);
+  box-shadow: 0 4px 8px var(--color-light-gray);
 }
 
 
@@ -65,6 +68,14 @@
   color: var(--color-mono-gray);
 }
 
+.alternative-card:hover {
+  background-color: var(--color-mid-gray); 
+  color: var(--color-black);
+  box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+
 
 /* === Disabled ===*/
 
@@ -97,4 +108,26 @@
   filter: blur(2px);
   pointer-events: none;
   opacity: 1;
+}
+
+.button-icon {
+  border-radius: 32px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background-color: var(--color-obscure-mint-green);
+  border: none;
+  color: var(--color-white);
+  padding: 12px 16px;
+  cursor: pointer;
+  transition: color 0.3s;
+  box-shadow: 0 4px 8px var(--color-light-gray);
+}
+
+.button-icon:hover {
+  background-color: var(--color-mint-green);
+}
+
+.button-icon .icon-right {
+  vertical-align: middle;
 }
