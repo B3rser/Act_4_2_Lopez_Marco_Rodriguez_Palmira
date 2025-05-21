@@ -6,7 +6,7 @@ const TextCard2 = ({ icon, description, onClick }) => {
   return (
     <div className="text-card2" onClick={onClick}>
       <div className="text-card2-icon">
-        <x-icon name={icon} size="40" color="var(--color-blue)"></x-icon>
+        <x-icon name={icon} size="40" color="var(--color-navy-blue)"></x-icon>
       </div>
       <p className="text-card2-description">{description}</p>
     </div>

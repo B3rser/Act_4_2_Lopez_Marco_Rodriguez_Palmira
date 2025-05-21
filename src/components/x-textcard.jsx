@@ -14,7 +14,7 @@ const TextCard = ({
     <div className="text-card">
       <h3 className="text-card-title">
         {label}
-        {icon && <x-icon name={icon} size="20" style={{ marginLeft: '8px', verticalAlign: 'middle' }} />}
+        {icon && <x-icon name={icon} size="24" style={{ marginLeft: '8px', verticalAlign: 'middle' }} />}
       </h3>
       <p className="text-card-description">{description}</p>
       {type === 'card-boton' && (
