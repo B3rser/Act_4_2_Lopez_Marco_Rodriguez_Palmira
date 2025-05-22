@@ -31,11 +31,9 @@
 }
 
 .secondary {
-  background-color: var(--very-light-gray);
+  background-color: var(--color-very-light-gray);
   color: var(--color-mono-gray);
   border: 1px solid var(--color-dark-gray);
-   box-shadow: 0 4px 8px var(--color-light-gray);
- 
 }
 
 
@@ -52,7 +50,7 @@
 
 .custom-button.secondary:hover:not(.hover):not(.disabled):not(:disabled) {
   border-color: var(--color-black);
-  background-color: var(--color-dark-gary);
+  background-color: var(--color-very-light-gray);
   color: var(--color-mono-gray);
 }
 
@@ -66,7 +64,7 @@
 
 .custom-button.secondary.hover {
   border-color: var(--color-black);
-  background-color: var(--color-dark-gary);
+  background-color: var(--color-very-light-gray);
   color: var(--color-mono-gray);
 }
 
@@ -104,7 +102,7 @@
 
 .custom-button.secondary.disabled,
 .custom-button.secondary:disabled {
-  background-color: var(--color-dark-gary);
+  background-color: var(--color-very-light-gray);
   color: var(--color-mono-gray);
   cursor: not-allowed;
   filter: blur(2px);

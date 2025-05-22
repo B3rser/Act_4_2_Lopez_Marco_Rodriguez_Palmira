@@ -120,7 +120,7 @@ export function Components() {
           image="https://wp.uaslp.mx/noticias/wp-content/uploads/sites/5/2024/04/thumbnail_UASLP-1024x682.jpg"
           title="uaslp"
           content="jdeneodoekde jsbibsbwuibsuiw"
-          buttonPriority='alternative-card'
+          buttonPriority='secondary'
           buttonLabel='Ver más'>
         </x-card>
 
