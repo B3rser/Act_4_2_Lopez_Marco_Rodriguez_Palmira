@@ -31,10 +31,11 @@
 }
 
 .secondary {
-  background-color: var(--color-dark-gary);
+  background-color: var(--very-light-gray);
   color: var(--color-mono-gray);
   border: 1px solid var(--color-dark-gray);
-  box-shadow: 0 4px 8px var(--color-light-gray);
+   box-shadow: 0 4px 8px var(--color-light-gray);
+ 
 }
 
 
