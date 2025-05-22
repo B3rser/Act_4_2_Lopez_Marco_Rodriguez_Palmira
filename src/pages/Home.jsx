@@ -13,6 +13,11 @@ export function Home() {
     <>
       <style>
         {`
+          body, html {
+            margin:0;
+            padding: 0;
+          }
+            
           .home-container {
             display: flex;
             flex-direction: column;
@@ -24,30 +29,39 @@ export function Home() {
 
           .hero-section {
             position: relative;
-            width: 100%;
-            max-width: 1447px;
-            height:600px;
-            background-image: url('https://www.liderempresarial.com/wp-content/uploads/2023/10/UASLP-reconocimiento-Instituciones-Ingenieria-Mexico.png'); 
+            width: 100vw;
+            height: 540px;
+            background-image: url('https://www.liderempresarial.com/wp-content/uploads/2023/10/UASLP-reconocimiento-Instituciones-Ingenieria-Mexico.png');
             background-size: cover;
             background-position: center;
             overflow: hidden;
-            margin-bottom: 40px;
+            margin-bottom: 80px;
+          }
+
+          .hero-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.6); 
+            z-index: 1;
           }
 
           .hero-content {
             position: absolute;
             top: 0;
-            left: 0;
-            width: 100%;
+            left: 119px;
+            width: 1011px;
             height: 100%;
-            backdrop-filter: brightness(0.6);
+
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-start; 
             justify-content: center;
+
             color: white;
             padding: 20px;
-            text-align: center;
+            text-align: left;
+            z-index: 2;
           }
 
           .hero-content h1 {
@@ -57,21 +71,19 @@ export function Home() {
           }
 
           .cards-section {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            flex-wrap: wrap;
-          }
+          display: flex;
+          justify-content: space-between;
+          gap: 20px;
 
-          x-textcard2 {
-            width: 120px;
-            height: 180px;
-            cursor: pointer;
-          }
+          padding: 0 50px;
+          width: 100%;
+          box-sizing: border-box;
 
-          x-button {
-            margin-top: 10px;
-          }
+          
+          flex-wrap: wrap;
+          margin-bottom: 80px;
+        }
+
         `}
       </style>
 
@@ -83,15 +95,15 @@ export function Home() {
               Te ayudamos a tomar decisiones informadas sobre tu educación superior.
               Encuentra la universidad y carrera ideal en un solo lugar
             </h1>
-            <x-button ref={buttonRef} priority="primary" label="Compara" variant="button-icon" />
+            <x-button ref={buttonRef} priority="button-icon" label="Compara carreras y universidades" state="default" />
           </div>
         </div>
 
         {/* Cards Section */}
         <div className="cards-section">
-          <x-textcard2 icon="school" description="Universidades" />
-          <x-textcard2 icon="book" description="Carreras" />
-          <x-textcard2 icon="star" description="Favoritos" />
+          <x-textcard2 icon="analyze" description="+500 carreras y universidades analizadas" />
+          <x-textcard2 icon="result" description="Test vocacional con resultados personalizados" />
+          <x-textcard2 icon="chat" description="Asesoría de mentores profesionales" />
         </div>
       </div>
     </>

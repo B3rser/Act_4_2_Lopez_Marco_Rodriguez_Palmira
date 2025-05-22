@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--color-white);
-  box-shadow: 0 16px 8px var(--color-blue-ligth);
+  box-shadow: 0 8px 8px var(--color-blue-ligth);
   cursor: pointer;
   transition: transform 0.2s, box-shadow 0.2s;
   padding: 16px;
