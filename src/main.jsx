@@ -8,6 +8,7 @@ import './components/x-button.jsx';
 import './components/x-textcard.jsx'
 import './components/x-card.jsx';
 import './components/x-textcard2.jsx';
+import './components/x-header.jsx';
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
