@@ -1,8 +1,9 @@
 import React from 'react';
 import './App.css';
-import { Components } from './pages/components';
+import { Components } from './pages/Components';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
+import { ExpUni } from './pages/ExpUni';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         <Route path="/home" element={<Home />} />
         <Route path="/components" element={<Components />} />
         <Route path="/" element={<Navigate to="/home" />}></Route>
+        <Route path="/expUni" element={<ExpUni/>}/>
       </Routes>
     </BrowserRouter>
   )
