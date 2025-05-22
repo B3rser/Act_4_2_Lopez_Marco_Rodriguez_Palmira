@@ -33,18 +33,19 @@ export function Components() {
 
   return (
     <div>
+      <x-header></x-header>
       <div>components</div>
 
-      <x-typography component='h1' font_family='Montserrat' >
-        Montserrat
+      <x-typography component='h1' font-family='Montserrat' >
+        Montserrat1
       </x-typography>
 
-      <x-typography component='p' font_family='Roboto'>
-        Montserrat
+      <x-typography component='h1' font-family='Roboto'>
+        Montserrat2
       </x-typography>
 
-      <x-typography component='small' font_family='DM Sans' >
-        Montserrat
+      <x-typography component='h1' font-family='DM Sans' >
+        Montserrat3
       </x-typography>
 
       <div>
@@ -149,9 +150,9 @@ export function Components() {
 
       <div>
         <x-textcard2
-      icon="home"
-      description="Ir al inicio"
-    ></x-textcard2>
+          icon="home"
+          description="Ir al inicio"
+        ></x-textcard2>
       </div>
 
     </div>
