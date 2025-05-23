@@ -10,6 +10,7 @@ import { Becas } from './pages/Becas';
 function App() {
   return (
     <BrowserRouter>
+      <x-header></x-header>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/components" element={<Components />} />
@@ -18,6 +19,7 @@ function App() {
         <Route path="/expCarr" element={<ExpCarr/>}/>
         <Route path="/becas" element={<Becas/>}/>
       </Routes>
+      <x-footer></x-footer>
     </BrowserRouter>
   )
 }

@@ -9,6 +9,9 @@ import './components/x-textcard.jsx'
 import './components/x-card.jsx';
 import './components/x-textcard2.jsx';
 import './components/x-header.jsx';
+import './components/x-footer.jsx';
+import './components/x-input.jsx'; 
+import './components/x-dropdown.jsx'; 
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
