@@ -18,8 +18,8 @@ const Header = ({ }) => {
                 <li><a href="/home"><x-typography component='p' font-family='Montserrat'>Inicio</x-typography></a></li>
                 <li><a href="/expUni"><x-typography component='p' font-family='Montserrat'>Universidades</x-typography></a></li>
                 <li><a href="/expCarr"><x-typography component='p' font-family='Montserrat'>Carreras</x-typography></a></li>
-                <li><a href=""><x-typography component='p' font-family='Montserrat'>Becas</x-typography></a></li>
-                <li><a href=""><x-typography component='p' font-family='Montserrat'>Asesoría</x-typography></a></li>
+                <li><a href="/becas"><x-typography component='p' font-family='Montserrat'>Becas</x-typography></a></li>
+                <li><a href="/asesorias"><x-typography component='p' font-family='Montserrat'>Asesoría</x-typography></a></li>
             </ul>
 
             <div className="user-section">

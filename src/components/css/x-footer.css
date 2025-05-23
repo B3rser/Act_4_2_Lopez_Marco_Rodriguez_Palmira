@@ -52,7 +52,6 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 30px;
-    border-top: 1px solid #eee;
     flex-wrap: wrap;
     gap: 20px;
 }
@@ -109,4 +108,12 @@
     width: 56px;
     height: 56px;
     object-fit: contain;
+}
+
+.divider {
+    height: 3px;
+    opacity: 0.06;
+    border-width:px;
+    border: 1px solid var(--color-dark);
+    background-color: var(--color-dark);
 }

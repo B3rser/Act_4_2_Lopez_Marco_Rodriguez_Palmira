@@ -51,13 +51,19 @@ const Footer = () => {
                 <div className="footer-column subscribe">
                     <x-typography font-family="DM Sans" weight="700" component="p">Recibe consejos</x-typography>
                     <form onSubmit={handleSubscribe}>
-                        
+                        <x-input
+                            label=""
+                            placeholder="correo electrónico"
+                            value={email}
+                            onchange={(e) => handleEmailInputChange(e)}
+                        ></x-input>
                     </form>
                     <x-typography font-family="DM Sans" component="p" className="subscribe-text">
                         Recibe recomendaciones personalizadas, actualizaciones sobre becas y eventos directamente en tu bandeja de entrada.
                     </x-typography>
                 </div>
             </div>
+            <hr className='divider'></hr>
 
             <div className="footer-bottom-section">
                 <div style={{ backgroundColor: "var(--color-navy-blue)", borderRadius: "15px" }}>
