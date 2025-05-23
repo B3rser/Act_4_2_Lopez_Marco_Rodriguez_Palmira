@@ -1,4 +1,28 @@
+import React from 'react';
+
 export function ExpUni() {
+    const [universidad, setUniversidad] = React.useState('');
+
+    const handleInputChange = (event) => {
+        setUniversidad(event.detail ? event.detail.value : event.target.value);
+    };
+
+    const [selectedDropdownValue, setSelectedDropdownValue] = React.useState('');
+
+    const handleDropdownChange = (event) => {
+        console.log(event)
+        const newValue = event.detail.value;
+        const newLabel = event.detail.label;
+        console.log('Dropdown selected:', newValue, newLabel);
+        setSelectedDropdownValue(newValue);
+    };
+
+    const options = [
+        { value: 'estado_1', label: 'Estado' },
+        { value: 'estado_2', label: 'Estado' },
+        { value: 'estado_3', label: 'Estado' },
+    ];
+
     return (
         <>
             <style>
@@ -12,10 +36,15 @@ export function ExpUni() {
                         padding: 40px;
                         width: 100%;
                         box-sizing: border-box;
-                        }
+                    }
+
+                    .filters{
+                        display: flex;
+                        flex-direction: row;
+                        align-items: flex-end; 
+                    }
 
                     `
-
                 }
 
             </style>
@@ -23,6 +52,22 @@ export function ExpUni() {
                 <h3>
                     Buscar Universidades
                 </h3>
+                <div className='filters'>
+                    <x-input
+                        label="Buscar por nombre"
+                        placeholder="Nombre de la universidad"
+                        value={universidad}
+                        onchange={(e) => handleInputChange(e)}
+                    ></x-input>
+
+                    <x-dropdown
+                        placeholder="Estado"
+                        options={options}
+                        value={selectedDropdownValue}
+                        onchange={handleDropdownChange}
+                    ></x-dropdown>
+                </div>
+
                 <div className="cards-grid">
                     <x-card
                         type="universidad"
