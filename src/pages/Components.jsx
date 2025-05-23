@@ -1,6 +1,12 @@
 import React, { useEffect, useRef } from 'react';
 
 export function Components() {
+  const [email, setEmail] = React.useState('');
+
+  const handleEmailInputChange = (event) => {
+    setEmail(event.detail ? event.detail.value : event.target.value);
+  };
+
   const handleClick = () => {
     alert('¡Botón presionado!');
   };
@@ -154,6 +160,13 @@ export function Components() {
           description="Ir al inicio"
         ></x-textcard2>
       </div>
+
+      <x-input
+        label="Correo Electrónico"
+        placeholder="Tu correo aquí..."
+        value={email}
+        onchange={(e) => handleEmailInputChange(e)}
+      ></x-input>
 
     </div>
 
