@@ -10,7 +10,7 @@ const Header = ({ }) => {
     return (
         <nav className="header">
             <div className="logo-section">
-                <img sizes='74px 74px' src="./assets/Logo.png" alt="UniNavigator Logo" className="logo-image" />
+                <img src="./assets/Logo.png" alt="UniNavigator Logo" className="logo-image" />
                 <x-typography component='h4' font-family='Montserrat'>UniNavigator</x-typography>
             </div>
 

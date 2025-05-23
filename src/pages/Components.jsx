@@ -1,7 +1,30 @@
 import React, { useEffect, useRef } from 'react';
 
-
 export function Components() {
+  const [email, setEmail] = React.useState('');
+
+  const handleEmailInputChange = (event) => {
+    setEmail(event.detail ? event.detail.value : event.target.value);
+  };
+
+  const [selectedDropdownValue, setSelectedDropdownValue] = React.useState('');
+
+  const handleDropdownChange = (event) => {
+    console.log(event)
+    const newValue = event.detail.value;
+    const newLabel = event.detail.label;
+    console.log('Dropdown selected:', newValue, newLabel);
+    setSelectedDropdownValue(newValue);
+  };
+
+  const careerOptions = [
+    { value: 'software_eng', label: 'Ingeniería de Software' },
+    { value: 'data_science', label: 'Ciencia de Datos' },
+    { value: 'cyber_sec', label: 'Ciberseguridad' },
+    'Marketing Digital',
+    'Diseño Gráfico'
+  ];
+
   const handleClick = () => {
     alert('¡Botón presionado!');
   };
@@ -34,6 +57,7 @@ export function Components() {
   return (
     <div>
       <x-header></x-header>
+      <x-footer></x-footer>
       <div>components</div>
 
       <x-typography component='h1' font-family='Montserrat' >
@@ -154,6 +178,22 @@ export function Components() {
           description="Ir al inicio"
         ></x-textcard2>
       </div>
+
+      <x-input
+        label="Correo Electrónico"
+        placeholder="Tu correo aquí..."
+        value={email}
+        onchange={(e) => handleEmailInputChange(e)}
+      ></x-input>
+
+      <x-dropdown
+        placeholder="Selecciona una Carrera"
+        options={careerOptions}
+        value={selectedDropdownValue}
+        onchange={handleDropdownChange}
+      ></x-dropdown>
+
+      <p>Carrera seleccionada: {selectedDropdownValue}</p>
 
     </div>
 
