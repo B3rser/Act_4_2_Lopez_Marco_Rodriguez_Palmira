@@ -6,6 +6,7 @@ import { Home } from './pages/Home';
 import { ExpUni } from './pages/ExpUni';
 import { ExpCarr } from './pages/ExpCarr';
 import { Becas } from './pages/Becas';
+import { Asesorias } from './pages/Asesorias';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/expUni" element={<ExpUni/>}/>
         <Route path="/expCarr" element={<ExpCarr/>}/>
         <Route path="/becas" element={<Becas/>}/>
+        <Route path="/asesorias" element={<Asesorias/>}/>
       </Routes>
       <x-footer></x-footer>
     </BrowserRouter>

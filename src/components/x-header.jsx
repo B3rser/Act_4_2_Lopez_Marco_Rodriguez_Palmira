@@ -9,17 +9,17 @@ const Header = ({ }) => {
 
     return (
         <nav className="header">
-            <div className="logo-section">
+            <a href="/home" className="logo-section">
                 <img src="./assets/Logo.png" alt="UniNavigator Logo" className="logo-image" />
                 <x-typography component='h4' font-family='Montserrat'>UniNavigator</x-typography>
-            </div>
+            </a>
 
             <ul className="nav-links">
-                <li><a href="#inicio"><x-typography component='p' font-family='Montserrat'>Inicio</x-typography></a></li>
-                <li><a href="#explorar"><x-typography component='p' font-family='Montserrat'>Universidades</x-typography></a></li>
-                <li><a href="#explorar"><x-typography component='p' font-family='Montserrat'>Carreras</x-typography></a></li>
-                <li><a href="#becas"><x-typography component='p' font-family='Montserrat'>Becas</x-typography></a></li>
-                <li><a href="#asesoria"><x-typography component='p' font-family='Montserrat'>Asesoría</x-typography></a></li>
+                <li><a href="/home"><x-typography component='p' font-family='Montserrat'>Inicio</x-typography></a></li>
+                <li><a href="/expUni"><x-typography component='p' font-family='Montserrat'>Universidades</x-typography></a></li>
+                <li><a href="/expCarr"><x-typography component='p' font-family='Montserrat'>Carreras</x-typography></a></li>
+                <li><a href="/becas"><x-typography component='p' font-family='Montserrat'>Becas</x-typography></a></li>
+                <li><a href="/asesorias"><x-typography component='p' font-family='Montserrat'>Asesoría</x-typography></a></li>
             </ul>
 
             <div className="user-section">
