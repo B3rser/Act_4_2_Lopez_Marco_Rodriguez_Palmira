@@ -5,35 +5,32 @@ export function Becas() {
                 {
                     `.cards-row {
                         display: flex;
-                        justify-content: center; /* Centra horizontalmente todas las cards */
-                        align-items: center;     /* Centra verticalmente (si es necesario) */
-                        gap: 20px;               /* Espacio entre las cards */
-                        flex-wrap: nowrap;       /* Evita que se vayan a otra línea */
-                        padding: 40px 20px;      /* Espaciado interior opcional */
-                        overflow-x: auto;        /* Opcional: para que no haya scroll horizontal si no cabe */
+                        justify-content: center; 
+                        align-items: center;    
+                        gap: 20px;              
+                        flex-wrap: nowrap;       
+                        padding: 40px 20px;     
+                        overflow-x: auto;        
                         box-sizing: border-box;
                         }
                         .cards-row2 {
                         display: flex;
-                        justify-content: start; /* Centra horizontalmente todas las cards */
-                        align-items: center;     /* Centra verticalmente (si es necesario) */
-                        gap: 60px;               /* Espacio entre las cards */
-                        flex-wrap: nowrap;       /* Evita que se vayan a otra línea */
-                        padding: 40px 20px;      /* Espaciado interior opcional */
-                        overflow-x: auto;        /* Opcional: para que no haya scroll horizontal si no cabe */
+                        justify-content: start; 
+                        align-items: center;     
+                        gap: 60px;               
+                        flex-wrap: nowrap;       
+                        padding: 40px 20px;     
+                        overflow-x: auto;        
                         box-sizing: border-box;
                         }
                     `
-
                 }
             </style>
 
             <div>
-                <h3> Becas y apoyo económico </h3>
+                <x-typography component='h1' font-family='Montserrat'>Becas y apoyo económico</x-typography>
                 <div>
-                    <h4>
-                        Categorías de becas
-                    </h4>
+                    <x-typography component='h2' font-family='Montserrat'>Categorías de becas</x-typography>
                     <div className="cards-row2 ">
                         <x-textcard2
                             icon="credit-card"
@@ -49,9 +46,7 @@ export function Becas() {
                     </div>
                 </div>
                 <div>
-                    <h4>
-                        Becas destacadas
-                    </h4>
+                    <x-typography component='h2' font-family='Montserrat'>Becas destacadas</x-typography>
                     <div className="cards-row ">
                         <x-textcard
                             label="Verano intercultural"

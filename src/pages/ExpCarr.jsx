@@ -19,9 +19,8 @@ export function ExpCarr(){
 
         </style>
         <div>
-            <h3>
-                Buscar Carreras
-            </h3>
+            
+            <x-typography component='h1' font-family='Montserrat'>Buscar Carreras</x-typography>
             <div className="cards-grid">
                 <x-card
                         type="carrera"

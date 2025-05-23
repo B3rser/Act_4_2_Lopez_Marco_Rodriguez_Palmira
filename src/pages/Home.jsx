@@ -91,10 +91,8 @@ export function Home() {
         {/* Hero Section */}
         <div className="hero-section">
           <div className="hero-content">
-            <h1>
-              Te ayudamos a tomar decisiones informadas sobre tu educación superior.
-              Encuentra la universidad y carrera ideal en un solo lugar
-            </h1>
+            <x-typography component='h2' font-family='Montserrat'>Te ayudamos a tomar decisiones informadas sobre tu educación superior.
+              Encuentra la universidad y carrera ideal en un solo lugar</x-typography>
             <x-button ref={buttonRef} priority="button-icon" label="Compara carreras y universidades" state="default" />
           </div>
         </div>

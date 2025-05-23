@@ -20,9 +20,7 @@ export function ExpUni() {
 
             </style>
             <div>
-                <h3>
-                    Buscar Universidades
-                </h3>
+                <x-typography component='h1' font-family='Montserrat'> Buscar Universidades</x-typography>
                 <div className="cards-grid">
                     <x-card
                         type="universidad"
