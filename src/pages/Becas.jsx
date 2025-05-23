@@ -1,89 +1,94 @@
 export function Becas() {
-    return (
-        <>
-            <style>
-                {
-                    `.cards-row {
-                        display: flex;
-                        justify-content: center; 
-                        align-items: center;    
-                        gap: 20px;              
-                        flex-wrap: nowrap;       
-                        padding: 40px 20px;     
-                        overflow-x: auto;        
-                        box-sizing: border-box;
-                        }
-                        .cards-row2 {
-                        display: flex;
-                        justify-content: start; 
-                        align-items: center;     
-                        gap: 60px;               
-                        flex-wrap: nowrap;       
-                        padding: 40px 20px;     
-                        overflow-x: auto;        
-                        box-sizing: border-box;
-                        }
-                    `
-                }
-            </style>
+  return (
+    <>
+      <style>
+        {`
+          .main-container {
+            max-width: 100%;
+            padding: 40px 20px;
+            box-sizing: border-box;
+          }
 
-            <div>
-                <x-typography component='h1' font-family='Montserrat'>Becas y apoyo económico</x-typography>
-                <div>
-                    <x-typography component='h2' font-family='Montserrat'>Categorías de becas</x-typography>
-                    <div className="cards-row2 ">
-                        <x-textcard2
-                            icon="credit-card"
-                            description="Ayuda económica">
+          .section-title {
+            margin-bottom: 20px;
+          }
 
-                        </x-textcard2>
-                        <x-textcard2
-                            icon="pin"
-                            description="Movilidad académica">
+          .cards-row,
+          .cards-row2 {
+            margin-top:60px;
+            margin-bottom: 100px;
+            display: flex;
+            justify-content: flex-start; 
+            align-items: flex-start;
+            gap: 20px;               
+            flex-wrap: nowrap;       
+                  
+            margin-bottom: 40px;
+            box-sizing: border-box;
+          }
 
-                        </x-textcard2>
+          .cards-row::-webkit-scrollbar {
+            height: 6px;
+          }
 
-                    </div>
-                </div>
-                <div>
-                    <x-typography component='h2' font-family='Montserrat'>Becas destacadas</x-typography>
-                    <div className="cards-row ">
-                        <x-textcard
-                            label="Verano intercultural"
-                            description="Placeholder text"
-                            type="card-boton"
-                            buttonpriority="button-icon"
-                            buttonlabel="Ver más"
-                            icon=""
-                        ></x-textcard>
-                        <x-textcard
-                            label="Gatronomía - ER 2025"
-                            description="Placeholder text"
-                            type="card-boton"
-                            buttonpriority="button-icon"
-                            buttonlabel="Ver más"
-                            icon=""
-                        ></x-textcard>
-                        <x-textcard
-                            label="Máster banca"
-                            description="Placeholder text"
-                            type="card-boton"
-                            buttonpriority="button-icon"
-                            buttonlabel="Ver más"
-                            icon=""
-                        ></x-textcard>
-                        <x-textcard
-                            label="2025 NAFSA Annua"
-                            description="Placeholder text"
-                            type="card-boton"
-                            buttonpriority="button-icon"
-                            buttonlabel="Ver más"
-                            icon=""
-                        ></x-textcard>
-                    </div>
-                </div>
-            </div>
+          .cards-row::-webkit-scrollbar-thumb {
+            background: #ccc;
+            border-radius: 4px;
+          }
+        `}
+      </style>
 
-        </>
-    );
+      <div className="main-container">
+        <x-typography component="h1" font-family="Montserrat" class="section-title">
+          Becas y apoyo económico
+        </x-typography>
+
+        <div>
+          <x-typography component="h2" font-family="Montserrat" class="section-title">
+            Categorías de becas
+          </x-typography>
+          <div className="cards-row2">
+            <x-textcard2 icon="credit-card" description="Ayuda económica" />
+            <x-textcard2 icon="pin" description="Movilidad académica" />
+          </div>
+        </div>
+
+        <div>
+          <x-typography component="h2" font-family="Montserrat" class="section-title">
+            Becas destacadas
+          </x-typography>
+          <div className="cards-row">
+            <x-textcard
+              label="Verano intercultural"
+              description="Placeholder text"
+              type="card-boton"
+              buttonpriority="button-icon"
+              buttonlabel="Ver más"
+            />
+            <x-textcard
+              label="Gastronomía - ER 2025"
+              description="Placeholder text"
+              type="card-boton"
+              buttonpriority="button-icon"
+              buttonlabel="Ver más"
+            />
+            <x-textcard
+              label="Máster banca"
+              description="Placeholder text"
+              type="card-boton"
+              buttonpriority="button-icon"
+              buttonlabel="Ver más"
+            />
+            <x-textcard
+              label="2025 NAFSA Annual"
+              description="Placeholder text"
+              type="card-boton"
+              buttonpriority="button-icon"
+              buttonlabel="Ver más"
+            />
+          </div>
+        </div>
+      </div>
+    </>
+  );
 }

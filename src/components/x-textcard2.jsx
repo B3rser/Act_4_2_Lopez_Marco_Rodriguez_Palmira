@@ -8,7 +8,7 @@ const TextCard2 = ({ icon, description, onClick }) => {
       <div className="text-card2-icon">
         <x-icon name={icon} size="40" color="var(--color-navy-blue)"></x-icon>
       </div>
-      <h3 className="text-card2-description">{description}</h3>
+      <p className="text-card2-description">{description}</p>
       
     </div>
   );

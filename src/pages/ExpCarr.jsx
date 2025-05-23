@@ -47,12 +47,27 @@ export function ExpCarr() {
                     `
                 }
 
-        </style>
-        <div>
-            
-            <x-typography component='h1' font-family='Montserrat'>Buscar Carreras</x-typography>
-            <div className="cards-grid">
-                <x-card
+            </style>
+            <div>
+
+                <x-typography component='h1' font-family='Montserrat'>Buscar Carreras</x-typography>
+                <div className='filters'>
+                    <x-input
+                        label="Buscar por nombre"
+                        placeholder="Nombre de la universidad"
+                        value={carrera}
+                        onchange={(e) => handleInputChange(e)}
+                    ></x-input>
+
+                    <x-dropdown
+                        placeholder="Área"
+                        options={options}
+                        value={selectedDropdownValue}
+                        onchange={handleDropdownChange}
+                    ></x-dropdown>
+                </div>
+                <div className="cards-grid">
+                    <x-card
                         type="carrera"
                         image="https://blog.ucq.edu.mx/hubfs/iStock-832282452.jpg"
                         title="Ingenería en Sistemas"
