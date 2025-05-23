@@ -5,6 +5,7 @@ import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import { Home } from './pages/Home';
 import { ExpUni } from './pages/ExpUni';
 import { ExpCarr } from './pages/ExpCarr';
+import { Becas } from './pages/Becas';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/home" />}></Route>
         <Route path="/expUni" element={<ExpUni/>}/>
         <Route path="/expCarr" element={<ExpCarr/>}/>
+        <Route path="/becas" element={<Becas/>}/>
       </Routes>
     </BrowserRouter>
   )
