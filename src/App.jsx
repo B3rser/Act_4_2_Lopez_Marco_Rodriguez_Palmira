@@ -7,11 +7,13 @@ import { Home } from './pages/Home';
 function App() {
   return (
     <BrowserRouter>
+      <x-header></x-header>
       <Routes>
         <Route path="/home" element={<Home />} />
         <Route path="/components" element={<Components />} />
         <Route path="/" element={<Navigate to="/home" />}></Route>
       </Routes>
+      <x-footer></x-footer>
     </BrowserRouter>
   )
 }
