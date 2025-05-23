@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react';
 
-
 export function Components() {
   const handleClick = () => {
     alert('¡Botón presionado!');
@@ -34,6 +33,7 @@ export function Components() {
   return (
     <div>
       <x-header></x-header>
+      <x-footer></x-footer>
       <div>components</div>
 
       <x-typography component='h1' font-family='Montserrat' >

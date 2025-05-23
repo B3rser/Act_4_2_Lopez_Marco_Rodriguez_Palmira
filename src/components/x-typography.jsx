@@ -37,8 +37,6 @@ class XTypography extends HTMLElement {
         this._reactRoot = ReactDOM.createRoot(this._mountPoint);
         this._observer = new MutationObserver(this._onMutation.bind(this));
         this._observer.observe(this, { childList: true, subtree: true, characterData: true });
-
-        console.log("XTypography constructor: _props inicial", this._props);
     }
 
     connectedCallback() {
@@ -54,7 +52,7 @@ class XTypography extends HTMLElement {
     attributeChangedCallback(name, oldValue, newValue) {
         const propName = this._attributeNameToPropName(name);
         this._props[propName] = newValue;
-        this._render(); // Forzamos un re-render con el atributo cambiado
+        this._render();
     }
 
     _attributeNameToPropName(attributeName) {
@@ -85,20 +83,16 @@ class XTypography extends HTMLElement {
 
     _render() {
         const { weight, size, font_family, component, classname, children } = this._props;
-        console.log("XTypography _render: Props recibidas por render:", { weight, size, font_family, component, classname, children });
-
         this._reactRoot.render(
-            <React.StrictMode>
-                <Typography
-                    weight={weight}
-                    size={size}
-                    font_family={font_family}
-                    component={component}
-                    classname={classname}
-                >
-                    {children}
-                </Typography>
-            </React.StrictMode>
+            <Typography
+                weight={weight}
+                size={size}
+                font_family={font_family}
+                component={component}
+                classname={classname}
+            >
+                {children}
+            </Typography>
         );
     }
 }
