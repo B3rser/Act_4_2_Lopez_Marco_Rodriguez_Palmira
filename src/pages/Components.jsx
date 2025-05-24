@@ -1,5 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 
+/**
+ * Description placeholder
+ *
+ * @export
+ * @returns {*} 
+ */
 export function Components() {
   const [email, setEmail] = React.useState('');
 

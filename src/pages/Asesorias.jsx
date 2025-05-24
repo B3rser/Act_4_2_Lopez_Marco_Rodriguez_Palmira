@@ -1,5 +1,11 @@
 import React from 'react'
 
+/**
+ * Description placeholder
+ *
+ * @export
+ * @returns {*} 
+ */
 export function Asesorias() {
     return (
         <>

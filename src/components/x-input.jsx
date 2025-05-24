@@ -2,6 +2,16 @@ import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import inputCSS from './css/x-input.css?inline';
 
+/**
+ * Description placeholder
+ *
+ * @param {{ label: any; placeholder: any; value: any; onChange: any; }} param0 
+ * @param {*} param0.label 
+ * @param {*} param0.placeholder 
+ * @param {*} param0.value 
+ * @param {*} param0.onChange 
+ * @returns {*} 
+ */
 const InputComponent = ({ label, placeholder, value, onChange }) => {
     const [inputValue, setInputValue] = useState(value || '');
     useEffect(() => {
@@ -31,6 +41,13 @@ const InputComponent = ({ label, placeholder, value, onChange }) => {
 };
 
 class XInput extends HTMLElement {
+    /**
+     * Description placeholder
+     *
+     * @static
+     * @readonly
+     * @type {{}}
+     */
     static get observedAttributes() {
         return ['label', 'placeholder', 'value'];
     }
@@ -51,11 +68,19 @@ class XInput extends HTMLElement {
         this.handleChange = this.handleChange.bind(this);
     }
 
+    /** Description placeholder */
     connectedCallback() {
         this._props.value = this.getAttribute('value') || '';
         this._render();
     }
 
+    /**
+     * Description placeholder
+     *
+     * @param {*} name 
+     * @param {*} oldValue 
+     * @param {*} newValue 
+     */
     attributeChangedCallback(name, oldValue, newValue) {
         if (this._props[name] !== newValue) {
             this._props[name] = newValue;
@@ -72,10 +97,20 @@ class XInput extends HTMLElement {
         }
     }
 
+    /**
+     * Description placeholder
+     *
+     * @type {*}
+     */
     get value() {
         return this._props.value || '';
     }
 
+    /**
+     * Description placeholder
+     *
+     * @type {*}
+     */
     set onChange(fn) {
         if (typeof fn === 'function') {
             this._props.onChange = fn;
@@ -86,6 +121,11 @@ class XInput extends HTMLElement {
         this._render();
     }
 
+    /**
+     * Description placeholder
+     *
+     * @param {*} event 
+     */
     handleChange(event) {
         const newValue = event.target.value;
 
@@ -105,6 +145,7 @@ class XInput extends HTMLElement {
         this._render();
     }
 
+    /** Description placeholder */
     _render() {
         const { label, placeholder, value } = this._props;
 

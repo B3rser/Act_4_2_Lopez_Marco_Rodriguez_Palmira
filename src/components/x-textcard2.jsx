@@ -2,6 +2,15 @@
 import ReactDOM from 'react-dom/client';
 import textCard2CSS from './css/x-textCard2.css?inline';
 
+/**
+ * Description placeholder
+ *
+ * @param {{ icon: any; description: any; onClick: any; }} param0 
+ * @param {*} param0.icon 
+ * @param {*} param0.description 
+ * @param {*} param0.onClick 
+ * @returns {*} 
+ */
 const TextCard2 = ({ icon, description, onClick }) => {
   return (
     <div className="text-card2" onClick={onClick}>
@@ -15,10 +24,22 @@ const TextCard2 = ({ icon, description, onClick }) => {
 };
 
 class XTextCard2 extends HTMLElement {
+  /**
+   * Description placeholder
+   *
+   * @static
+   * @readonly
+   * @type {{}}
+   */
   static get observedAttributes() {
     return ['icon', 'description'];
   }
 
+  /**
+   * Creates an instance of XTextCard2.
+   *
+   * @constructor
+   */
   constructor() {
     super();
     this._props = {};
@@ -34,6 +55,7 @@ class XTextCard2 extends HTMLElement {
     this._reactRoot = ReactDOM.createRoot(this._mountPoint);
   }
 
+  /** Description placeholder */
   connectedCallback() {
     this._mountPoint.addEventListener('click', (e) => {
       if (this._props.onClick) {
@@ -44,16 +66,29 @@ class XTextCard2 extends HTMLElement {
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @param {*} name 
+   * @param {*} _ 
+   * @param {*} newValue 
+   */
   attributeChangedCallback(name, _, newValue) {
     this._props[name.toLowerCase()] = newValue;
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @type {*}
+   */
   set onClick(fn) {
     this._props.onClick = fn;
     this._render();
   }
 
+  /** Description placeholder */
   _render() {
     const { icon, description, onClick } = this._props;
 

@@ -1,5 +1,11 @@
 import React from 'react';
 
+/**
+ * Description placeholder
+ *
+ * @export
+ * @returns {*} 
+ */
 export function ExpUni() {
     const [universidad, setUniversidad] = React.useState('');
 

@@ -2,6 +2,18 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import textCardCSS from './css/x-textCard.css?inline';
 
+/**
+ * Description placeholder
+ *
+ * @param {{ label: any; description: any; type?: string; buttonPriority?: string; buttonLabel?: string; icon: any; }} param0 
+ * @param {*} param0.label 
+ * @param {*} param0.description 
+ * @param {string} [param0.type='default'] 
+ * @param {string} [param0.buttonPriority='primary'] 
+ * @param {string} [param0.buttonLabel='Ver más'] 
+ * @param {*} param0.icon 
+ * @returns {*} 
+ */
 const TextCard = ({
   label,
   description,
@@ -31,10 +43,22 @@ const TextCard = ({
 };
 
 class XTextCard extends HTMLElement {
+  /**
+   * Description placeholder
+   *
+   * @static
+   * @readonly
+   * @type {{}}
+   */
   static get observedAttributes() {
     return ['label', 'description', 'type', 'buttonpriority', 'buttonlabel', 'icon'];
   }
 
+  /**
+   * Creates an instance of XTextCard.
+   *
+   * @constructor
+   */
   constructor() {
     super();
     this._props = {};
@@ -50,6 +74,7 @@ class XTextCard extends HTMLElement {
     this._reactRoot = ReactDOM.createRoot(this._mountPoint);
   }
 
+  /** Description placeholder */
   connectedCallback() {
     this._mountPoint.addEventListener('click', (e) => {
       if (e.target.tagName === 'X-BUTTON' && this._props.onClick) {
@@ -60,16 +85,29 @@ class XTextCard extends HTMLElement {
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @param {*} name 
+   * @param {*} _ 
+   * @param {*} newValue 
+   */
   attributeChangedCallback(name, _, newValue) {
     this._props[name.toLowerCase()] = newValue;
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @type {*}
+   */
   set onClick(fn) {
     this._props.onClick = fn;
     this._render();
   }
 
+  /** Description placeholder */
   _render() {
     const {
       label,

@@ -1,9 +1,17 @@
+/**
+ * Variables CSS globales y configuraciones base para toda la aplicación.
+ * Aquí se definen la paleta de colores, las fuentes y otros estilos fundamentales.
+ */
+
 :root {
+  /**
+   *  Fuentes que se usaran dentro del sistema.
+   */
   font-family: "Montserrat", "Roboto", "DM Sans", sans-serif;
 
-  /*
-    Colors
-  */
+  /**
+   *  Paleta de colores establecida en el sistema.
+   */
   --color-white: #FFFFFF;
   --color-black: #212429;
   --color-dark: #0A142F;
@@ -12,14 +20,14 @@
   --color-navy-blue: #003366;
   --color-teal-blue: #05699E;
   --color-mustard-yellow: #FFC107;
-  --color-teal-yellow: #FFC107CC;
+  --color-teal-yellow: #FFC107CC; /* Transparencia */
   --color-mono-gray: #505050;
-  --color-blue-ligth: #0C14A74D;
+  --color-blue-ligth: #0C14A74D; /* Transparencia */
   --color-blue: #0C14A7;
 
   --color-dark-gray: #D9D9D9;
   --color-mid-gray: #ACB5BD;
-  --color-light-gray: #DDE2E566;
+  --color-light-gray: #DDE2E566; /* Transparencia */
   --color-very-light-gray: #F8F9FA;
   --color-success-green: #E6F2EC;
   --color-mint-green: #31D0AA;
@@ -32,12 +40,20 @@
   background-color: var(--color-white);
 }
 
+/**
+ * Estilos base para el cuerpo de la página.
+ */
 body {
   margin: 0;
   min-width: 1440px;
   min-height: 100vh;
   width: 100%; 
 }
+
+/**
+ * Estilos definidos en el diseño para las etiquetas
+ * de texto en el sistema.
+ */
 
 h1 {
   font-size: 50px;

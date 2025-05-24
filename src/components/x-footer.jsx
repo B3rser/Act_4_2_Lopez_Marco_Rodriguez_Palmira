@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import ReactDOM from 'react-dom/client';
 import footerCSS from './css/x-footer.css?inline';
 
+/**
+ * Description placeholder
+ *
+ * @returns {*} 
+ */
 const Footer = () => {
     const [email, setEmail] = useState('');
 
@@ -87,6 +92,11 @@ const Footer = () => {
 };
 
 class XFooter extends HTMLElement {
+    /**
+     * Creates an instance of XFooter.
+     *
+     * @constructor
+     */
     constructor() {
         super();
         this._root = this.attachShadow({ mode: 'open' });
@@ -101,14 +111,17 @@ class XFooter extends HTMLElement {
         this._reactRoot = ReactDOM.createRoot(this._mountPoint);
     }
 
+    /** Description placeholder */
     connectedCallback() {
         this._render();
     }
 
+    /** Description placeholder */
     disconnectedCallback() {
         this._reactRoot.unmount();
     }
 
+    /** Description placeholder */
     _render() {
         this._reactRoot.render(
             <Footer />

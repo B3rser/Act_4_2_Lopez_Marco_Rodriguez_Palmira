@@ -1,3 +1,9 @@
+/**
+ * Description placeholder
+ *
+ * @export
+ * @returns {*} 
+ */
 export function Becas() {
   return (
     <>

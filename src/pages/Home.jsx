@@ -1,16 +1,46 @@
 import { useEffect, useRef } from 'react';
 
-export function Home() {
-  const buttonRef = useRef();
+/**
+ * @fileoverview Este módulo define el componente `Home`, que es la página de inicio
+ * de la aplicación. Se compone de dos secciones, una donde se le sugiere al usuario ir
+ * a buscar y comparar universidades y carreras en el sistema, y otra sección donde
+ * se hablan sobre algunos aspectos que tiene el sistema (cantidad de carreras analizadas,
+ * test vocacionales y asesorías personalizadas).
+ */
 
+/**
+ * Componente funcional `Home`.
+ *
+ * Este componente representa la página principal de la aplicación.
+ *
+ * @returns {JSX.Element}
+ */
+export function Home() {
+  const buttonRef = useRef(null);
+
+  /**
+   * `useEffect` Hook:
+   * Este efecto se ejecuta una vez después del montaje inicial del componente.
+   * Su propósito es asignar una función `onClick` al elemento del botón
+   * referenciado por `buttonRef`. Cuando el botón es clickeado, se imprime
+   * un mensaje en la consola.
+   */
   useEffect(() => {
-    buttonRef.current.onClick = () => {
-      console.log('Botón "Compara" clickeado');
-    };
-  }, []);
+    // Asegurarse de que buttonRef.current exista antes de intentar acceder a sus propiedades.
+    if (buttonRef.current) {
+      buttonRef.current.onclick = () => {
+        console.log('Botón "Compara" clickeado');
+      };
+    }
+  }, []); // El array vacío asegura que este efecto se ejecute solo una vez al montar.
 
   return (
     <>
+      {/*
+        Bloque de estilos CSS incrustados directamente en el componente.
+        Define la apariencia general de la página y los componentes
+        que contiene.
+      */}
       <style>
         {`
           body, html {
@@ -42,7 +72,7 @@ export function Home() {
             content: "";
             position: absolute;
             inset: 0;
-            background-color: rgba(0, 0, 0, 0.6); 
+            background-color: rgba(0, 0, 0, 0.6);  
             z-index: 1;
           }
 
@@ -55,7 +85,7 @@ export function Home() {
 
             display: flex;
             flex-direction: column;
-            align-items: flex-start; 
+            align-items: flex-start;  
             justify-content: center;
 
             color: white;
@@ -71,33 +101,36 @@ export function Home() {
           }
 
           .cards-section {
-          display: flex;
-          justify-content: space-between;
-          gap: 20px;
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
 
-          padding: 0 50px;
-          width: 100%;
-          box-sizing: border-box;
+            padding: 0 50px;
+            width: 100%;
+            box-sizing: border-box;
 
-          
-          flex-wrap: wrap;
-          margin-bottom: 80px;
-        }
+            flex-wrap: wrap;
+            margin-bottom: 80px;
+          }
 
         `}
       </style>
 
+      {/* Contenedor principal de la página de inicio */}
       <div className="home-container">
-        {/* Hero Section */}
+        {/* Sección de Héroe: Banner principal con imagen de fondo y contenido destacado */}
         <div className="hero-section">
           <div className="hero-content">
-            <x-typography component='h2' font-family='Montserrat'>Te ayudamos a tomar decisiones informadas sobre tu educación superior.
-              Encuentra la universidad y carrera ideal en un solo lugar</x-typography>
+            <x-typography component='h2' font-family='Montserrat'>
+              Te ayudamos a tomar decisiones informadas sobre tu educación superior.
+              Encuentra la universidad y carrera ideal en un solo lugar
+            </x-typography>
+            {/* Boton que quizas deba encargarse de redirigir al usuario a alguna pagina de comparacion o busqueda */}
             <x-button ref={buttonRef} priority="button-icon" label="Compara carreras y universidades" state="default" />
           </div>
         </div>
 
-        {/* Cards Section */}
+        {/* Sección de Tarjetas: Muestra características clave de la aplicación */}
         <div className="cards-section">
           <x-textcard2 icon="analyze" description="+500 carreras y universidades analizadas" />
           <x-textcard2 icon="result" description="Test vocacional con resultados personalizados" />

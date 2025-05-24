@@ -2,6 +2,19 @@ import ReactDOM from 'react-dom/client';
 import cardCSS from './css/x-card.css?inline';
 import React, { useEffect, useRef } from 'react';
 
+/**
+ * Description placeholder
+ *
+ * @param {{ type?: string; image: any; title: any; content: any; buttonPriority?: string; buttonLabel?: string; onButtonClick: any; }} param0 
+ * @param {string} [param0.type='universidad'] 
+ * @param {*} param0.image 
+ * @param {*} param0.title 
+ * @param {*} param0.content 
+ * @param {string} [param0.buttonPriority='alternative-card'] 
+ * @param {string} [param0.buttonLabel='Ver más'] 
+ * @param {*} param0.onButtonClick 
+ * @returns {*} 
+ */
 const Card = ({
   type = 'universidad',
   image,
@@ -43,10 +56,22 @@ const Card = ({
 };
 
 class XCard extends HTMLElement {
+  /**
+   * Description placeholder
+   *
+   * @static
+   * @readonly
+   * @type {{}}
+   */
   static get observedAttributes() {
     return ['type', 'image', 'title', 'content', 'buttonpriority', 'buttonlabel'];
   }
 
+  /**
+   * Creates an instance of XCard.
+   *
+   * @constructor
+   */
   constructor() {
     super();
     this._props = {};
@@ -62,6 +87,7 @@ class XCard extends HTMLElement {
     this._reactRoot = ReactDOM.createRoot(this._mountPoint);
   }
 
+  /** Description placeholder */
   connectedCallback() {
     // Agrega listener al botón si se definió onClick
     this._mountPoint.addEventListener('click', (e) => {
@@ -73,16 +99,29 @@ class XCard extends HTMLElement {
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @param {*} name 
+   * @param {*} _ 
+   * @param {*} newValue 
+   */
   attributeChangedCallback(name, _, newValue) {
     this._props[name.toLowerCase()] = newValue;
     this._render();
   }
 
+  /**
+   * Description placeholder
+   *
+   * @type {*}
+   */
   set onClick(fn) {
     this._props.onClick = fn;
     this._render();
   }
 
+  /** Description placeholder */
   _render() {
     const {
       type,

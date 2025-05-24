@@ -2,6 +2,12 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import headerCSS from './css/x-header.css?inline';
 
+/**
+ * Description placeholder
+ *
+ * @param {{}} param0 
+ * @returns {*} 
+ */
 const Header = ({ }) => {
     const handleLogout = () => {
         console.log("Cerrar sesión clickeado!");
@@ -31,6 +37,11 @@ const Header = ({ }) => {
 };
 
 class XHeader extends HTMLElement {
+    /**
+     * Creates an instance of XHeader.
+     *
+     * @constructor
+     */
     constructor() {
         super();
         this._props = {};
@@ -45,10 +56,12 @@ class XHeader extends HTMLElement {
         this._reactRoot = ReactDOM.createRoot(this._mountPoint);
     }
 
+    /** Description placeholder */
     connectedCallback() {
         this._render();
     }
 
+    /** Description placeholder */
     _render() {
         this._reactRoot.render(
             <Header />
