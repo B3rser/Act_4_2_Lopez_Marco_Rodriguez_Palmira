@@ -2,9 +2,20 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 
 /**
- * Description placeholder
- *
- * @type {*}
+ * @fileoverview Este módulo define el Web Component `x-icon` y el componente React `Icon`
+ * que lo alimenta. `x-icon` actúa como un envoltorio para integrar la funcionalidad de React
+ * dentro de un Custom Element, permitiendo su uso en HTML estándar y proporcionando una interfaz
+ * de propiedades para renderizar íconos SVG de manera dinámica.
+ */
+
+/**
+ * `iconPaths`
+ * Un `Map` que almacena las definiciones de los íconos disponibles.
+ * Cada clave es el nombre del ícono (string) y el valor es un objeto que contiene:
+ * - `path`: La cadena de caracteres que define la forma SVG del ícono (atributo `d` de la etiqueta `path`).
+ * - `viewBox`: La cadena de caracteres que define el `viewBox` del SVG.
+ * - `useStroke`: Un booleano que indica si el ícono debe ser dibujado con `stroke` (borde) en lugar de `fill` (relleno).
+ * @type {Map<string, { path: string; viewBox: string; useStroke?: boolean }>}
  */
 const iconPaths = new Map([
     ['home', { path: 'M3 8.24998L12 1.83331L21 8.24998V18.3333C21 18.8195 20.7893 19.2859 20.4142 19.6297C20.0391 19.9735 19.5304 20.1666 19 20.1666H5C4.46957 20.1666 3.96086 19.9735 3.58579 19.6297C3.21071 19.2859 3 18.8195 3 18.3333V8.24998Z M9 20.1667V11H15V20.1667', useStroke: true, viewBox: '0 0 24 22' }],
@@ -44,13 +55,17 @@ const iconPaths = new Map([
 ]);
 
 /**
- * Description placeholder
+ * `Icon` (Componente React)
  *
- * @param {{ name: any; size?: number; color?: string; }} param0 
- * @param {*} param0.name 
- * @param {number} [param0.size=24] 
- * @param {string} [param0.color='var(--color-black)'] 
- * @returns {*} 
+ * Este componente funcional de React renderiza un ícono SVG basado en su nombre, tamaño y color.
+ * Obtiene la definición del ícono (path, viewBox, etc.) del mapa `iconPaths`.
+ * Si el ícono no se encuentra, no renderiza nada.
+ *
+ * @param {object} props - Las propiedades que recibe el componente.
+ * @param {string} props.name - El nombre del ícono a renderizar, debe coincidir con una clave en `iconPaths`.
+ * @param {number} [props.size=24] - El tamaño (ancho y alto) del ícono en píxeles.
+ * @param {string} [props.color='var(--color-black)'] - El color del ícono. Puede ser un nombre de color, un código hexadecimal, RGB, o una variable CSS.
+ * @returns {JSX.Element|null}
  */
 const Icon = ({ name, size = 24, color = 'var(--color-black)' }) => {
     const icon = iconPaths.get(name);
@@ -58,73 +73,110 @@ const Icon = ({ name, size = 24, color = 'var(--color-black)' }) => {
 
     return (
         <svg
-            width={size}
-            height={size}
-            viewBox={icon.viewBox}
-            fill={icon.useStroke ? 'none' : color}
-            stroke={icon.useStroke ? color : 'none'}
-            strokeWidth={icon.useStroke ? 2 : 0}
-            strokeLinecap={icon.useStroke ? 'round' : undefined}
-            strokeLinejoin={icon.useStroke ? 'round' : undefined}
-            xmlns="http://www.w3.org/2000/svg"
+            width={size} // Establece el ancho del SVG
+            height={size} // Establece la altura del SVG
+            viewBox={icon.viewBox} // Define el sistema de coordenadas para el contenido del SVG
+            fill={icon.useStroke ? 'none' : color} // Rellena el ícono si no usa stroke
+            stroke={icon.useStroke ? color : 'none'} // Dibuja el stroke si el ícono lo requiere
+            strokeWidth={icon.useStroke ? 2 : 0} // Ancho del stroke si se usa
+            strokeLinecap={icon.useStroke ? 'round' : undefined} // Estilo de los extremos del stroke
+            strokeLinejoin={icon.useStroke ? 'round' : undefined} // Estilo de las uniones del stroke
+            xmlns="http://www.w3.org/2000/svg" // Define el namespace SVG
         >
-            <path d={icon.path} />
+            <path d={icon.path} /> {/* Dibuja la forma del ícono */}
         </svg>
     );
 };
 
+// Web Component `XIcon`
+
+/**
+ * `CustomIconElement`
+ *
+ * Esta clase extiende `HTMLElement` para crear un Custom Element (`<x-icon>`).
+ * Actúa como un puente entre el HTML estándar y el componente React `Icon`.
+ * Gestiona los atributos HTML del Custom Element (`name`, `size`, `color`)
+ * y los pasa como propiedades al componente React, renderizándolo dentro de su Shadow DOM.
+ *
+ * @extends HTMLElement
+ */
 class CustomIconElement extends HTMLElement {
     /**
-     * Description placeholder
-     *
+     * Propiedad estática `observedAttributes`.
+     * Define qué atributos HTML el Custom Element observará para cambios.
+     * Cuando uno de estos atributos cambia, se invoca `attributeChangedCallback`.
      * @static
      * @readonly
-     * @type {{}}
+     * @type {string[]}
      */
     static get observedAttributes() {
         return ['name', 'size', 'color'];
     }
 
     /**
-     * Creates an instance of CustomIconElement.
-     *
-     * @constructor
+     * Constructor de la clase `CustomIconElement`.
+     * Crea un punto de montaje (`<span>`) dentro del Shadow DOM y adjunta el Shadow DOM.
+     * Inicializa `reactRoot` a `null` para crearlo solo cuando sea necesario.
      */
     constructor() {
         super();
-        const mountPoint = document.createElement('span');
-        this.attachShadow({ mode: 'open' }).appendChild(mountPoint);
-        this.mountPoint = mountPoint;
+        const mountPoint = document.createElement('span'); // Punto de montaje para el componente React
+        this.attachShadow({ mode: 'open' }).appendChild(mountPoint); // Adjunta Shadow DOM y añade el punto de montaje
+        this.mountPoint = mountPoint; // Guarda la referencia al punto de montaje
+        this.reactRoot = null; // Se inicializará cuando se renderice React por primera vez
     }
 
-    /** Description placeholder */
+    /**
+     * `connectedCallback`.
+     * Se invoca cuando el Custom Element es añadido al DOM.
+     * Realiza el renderizado inicial del componente React `Icon`.
+     */
     connectedCallback() {
         this.renderReact();
     }
 
-    /** Description placeholder */
+    /**
+     * `attributeChangedCallback`.
+     * Se invoca cuando uno de los atributos definidos en `observedAttributes` cambia.
+     * Fuerza un re-renderizado del componente React `Icon` para reflejar el cambio en la UI.
+     * @param {string} name - El nombre del atributo que cambió.
+     * @param {string|null} oldValue - El valor anterior del atributo.
+     * @param {string|null} newValue - El nuevo valor del atributo.
+     */
     attributeChangedCallback() {
         this.renderReact();
     }
 
-    /** Description placeholder */
+    /**
+     * `renderReact` (Método Interno).
+     * Este método es responsable de renderizar o re-renderizar el componente `Icon` de React
+     * dentro del Shadow DOM del Custom Element.
+     * Obtiene los valores actuales de los atributos del Custom Element y los pasa como props al componente `Icon`.
+     * Crea la raíz de React si aún no existe.
+     */
     renderReact() {
+        // Obtiene los valores de los atributos del Custom Element.
         const name = this.getAttribute('name');
         const size = this.getAttribute('size');
         const color = this.getAttribute('color');
 
+        // Crea la raíz de React solo una vez.
         if (!this.reactRoot) {
             this.reactRoot = ReactDOM.createRoot(this.mountPoint);
         }
 
+        // Renderiza el componente React `Icon` con las propiedades obtenidas de los atributos.
         this.reactRoot.render(
             <Icon
                 name={name}
+                // Convierte el tamaño a número si existe, de lo contrario es `undefined` para usar el valor por defecto de React.
                 size={size ? Number(size) : undefined}
+                // Usa el color del atributo si existe, de lo contrario usa el color por defecto.
                 color={color ? color : 'var(--color-black)'}
             />
         );
     }
 }
 
+// Define el Custom Element 'x-icon' en el navegador, asociándolo con la clase CustomIconElement.
 customElements.define('x-icon', CustomIconElement);
